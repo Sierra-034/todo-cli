@@ -1,4 +1,5 @@
 require('colors');
+const { guardarArchivo } = require('./helpers/guardarArchivo');
 const {
     inquirerMenu, pausa, leerInput
 } = require('./helpers/inquirer');
@@ -18,6 +19,7 @@ const main = async () => {
                 console.log(tareas.listado);
         }
         
+        guardarArchivo(tareas.listado);
         if (opt != 0) await pausa();
     } while(opt != 0);
 };
