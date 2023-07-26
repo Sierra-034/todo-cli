@@ -1,8 +1,15 @@
+const { leerArchivo } = require('../helpers/guardarArchivo');
 const Tarea = require('./tarea');
 
 class Tareas {
     constructor() {
-        this._listado = new Map();
+        const tareas = leerArchivo();
+        if (tareas) {
+            const mappedInfo = tareas.map(value => [value.id, value]);
+            this._listado = new Map(mappedInfo);
+        } else {
+            this._listado = new Map();
+        }
     }
 
     get listado() {
