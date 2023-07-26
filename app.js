@@ -15,7 +15,7 @@ const main = async () => {
                 tareas.crearTarea(desc);
                 break;
             case 2:
-                console.log(tareas._listado);
+                console.log(tareas.listado);
         }
         
         if (opt != 0) await pausa();
