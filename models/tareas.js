@@ -14,11 +14,19 @@ class Tareas {
 
     get listado() {
         const lyst = new Array();
-        this._listado.forEach((value) => {
-            lyst.push(value);
-        });
-
+        this._listado.forEach(item => lyst.push(item));
         return lyst;
+    }
+
+    listadoCompleto() {
+        console.log();
+        this.listado.forEach((value, index) => {
+            const {desc, completadoEn} = value;
+            const idx = `${index + 1}`.green;
+            let str = `${idx} ${desc} :: `;
+            str += (completadoEn) ? 'completado'.green : 'pendiente'.red;
+            console.log(str);
+        });
     }
 
     crearTarea(desc = '') {
