@@ -51,6 +51,12 @@ class Tareas {
             console.log(str);
         });
     }
+
+    borrarTarea(id = '') {
+        if (this._listado.has(id)) {
+            this._listado.delete(id);
+        }
+    }
 }
 
 module.exports = Tareas;
