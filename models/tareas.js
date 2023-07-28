@@ -33,6 +33,24 @@ class Tareas {
         const tarea = new Tarea(desc);
         this._listado.set(tarea.id, tarea);
     }
+    
+    listarPendientesCompletadas(isCompletada = true) {
+        const completadas = (tarea) => tarea.completadoEn !== null;
+        const pendientes = (tarea) => tarea.completadoEn === null;
+
+        let filtered = null;
+        if (isCompletada) filtered = this.listado.filter(completadas);
+        else filtered = this.listado.filter(pendientes);
+
+        console.log();
+        filtered.forEach((item, index) => {
+            const {desc, completadoEn} = item;
+            const idx = `${index + 1}`.green;
+            let str = `${idx} ${desc} :: `;
+            str += (completadoEn) ? 'completado'.green : 'pendiente'.red;
+            console.log(str);
+        });
+    }
 }
 
 module.exports = Tareas;
